@@ -122,12 +122,12 @@ if user_prompt:
                 {KNOWLEDGE_BASE}
                 """
                 
+                user_content = f"{sys_prompt}\n\nUser Question: {user_prompt}"
+                
                 response = client.models.generate_content(
                     model="gemini-2.5-flash",
                     contents=[
-                        {"role": "user", "parts": [{"text": sys_prompt + "
-
-User Question: " + user_prompt}]}
+                        {"role": "user", "parts": [{"text": user_content}]}
                     ]
                 )
                 response_text = response.text
